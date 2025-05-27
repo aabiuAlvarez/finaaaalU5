@@ -1,0 +1,200 @@
+/* Variables de diseño mejoradas */
+:root {
+  --f1-red: #e10600;
+  --f1-red-dark: #b80500;
+  --f1-dark: #15151e;
+  --f1-dark-light: #2a2a36;
+  --f1-light: #ffffff;
+  --f1-gray: #f1f1f1;
+  --f1-gray-dark: #e0e0e0;
+  --f1-accent: #ffde00;
+  --f1-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --f1-border-radius: 8px;
+  --f1-transition: all 0.3s ease;
+}
+
+/* Tipografía */
+@font-face {
+  font-family: 'F1';
+  src: url('https://www.formula1.com/etc/designs/fom-website/fonts/F1Regular/Formula1-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'F1';
+  src: url('https://www.formula1.com/etc/designs/fom-website/fonts/F1Bold/Formula1-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'F1', Arial, sans-serif;
+  background-color: var(--f1-light);
+  color: var(--f1-dark);
+  line-height: 1.6;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--f1-gray) 0%, var(--f1-light) 100%);
+}
+
+/* Header mejorado */
+header {
+  background-color: var(--f1-dark);
+  color: var(--f1-light);
+  padding: 1rem 0;
+  box-shadow: var(--f1-shadow);
+  position: relative;
+  z-index: 100;
+}
+
+header::after {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, var(--f1-red) 0%, var(--f1-accent) 100%);
+}
+
+/* Contenido principal */
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.home-grid > * {
+  background: var(--f1-light);
+  border-radius: var(--f1-border-radius);
+  box-shadow: var(--f1-shadow);
+  padding: 1.5rem;
+  transition: var(--f1-transition);
+}
+
+.home-grid > *:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Elementos destacados */
+.highlight {
+  border-left: 4px solid var(--f1-red);
+  background-color: var(--f1-gray);
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  background-color: var(--f1-red);
+  color: var(--f1-light);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--f1-border-radius);
+  text-decoration: none;
+  font-weight: bold;
+  transition: var(--f1-transition);
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--f1-red-dark);
+  transform: translateY(-2px);
+}
+
+/* Tarjetas */
+.card {
+  background: var(--f1-light);
+  border-radius: var(--f1-border-radius);
+  box-shadow: var(--f1-shadow);
+  overflow: hidden;
+  transition: var(--f1-transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  background-color: var(--f1-dark);
+  color: var(--f1-light);
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .home-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  main {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .home-grid > * {
+    padding: 1rem;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Efectos de velocidad (opcional) */
+.speed-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.speed-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: none;
+}
+
+.speed-effect:hover::after {
+  left: 100%;
+  transition: all 0.6s ease-in-out;
+}
